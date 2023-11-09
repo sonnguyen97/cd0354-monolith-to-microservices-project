@@ -20,7 +20,7 @@ export function requireAuth(req: Request, res: Response, next: NextFunction) {
   const token = tokenBearer[1];
   return jwt.verify(token, c.config.jwt.secret, (err, decoded) => {
     if (err) {
-      return res.status(500).send({auth: false, message: 'Failed to authenticate.'});
+      return res.status(500).send({auth: false, message: 'Failed to authenticate.'+err});
     }
     return next();
   });
@@ -50,10 +50,9 @@ router.get('/signed-url/:fileName',
     requireAuth,
     async (req: Request, res: Response) => {
       const {fileName} = req.params;
-      console.log("===========================" + fileName);
+      console.log('file',fileName)
       const url = AWS.getPutSignedUrl(fileName);
-      console.log(url);
-      
+      console.log('url',url)
       res.status(201).send({url: url});
     });
 

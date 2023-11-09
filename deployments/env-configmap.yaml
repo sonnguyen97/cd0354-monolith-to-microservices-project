@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+data:
+  AWS_BUCKET: test-076700770898-dev
+  AWS_PROFILE: eb-cli
+  AWS_REGION: us-east-1
+  JWT_SECRET: testing
+  POSTGRES_DB: postgres
+  POSTGRES_HOST: postgres-uda-3.cwhqj8ck1p6o.us-east-1.rds.amazonaws.com
+  URL: http://localhost:8100
+metadata:
+  name: env-config
+# # you will replace URL with the URL of the frontend once you deploy it to AWS.
+
